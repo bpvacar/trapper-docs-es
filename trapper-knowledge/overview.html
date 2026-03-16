@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Welcome to TRAPPER Ecosystem Documentation — TRAPPER Knowledge 0.0.1 documentation (Spanish)</title>
+<style>
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem;
+    line-height: 1.6;
+    color: #333;
+}
+h1, h2, h3, h4 { color: #2c3e50; margin-top: 1.5em; }
+h1 { border-bottom: 2px solid #3498db; padding-bottom: 0.3em; }
+pre { background: #f4f4f4; padding: 1em; overflow-x: auto; border-radius: 4px; }
+code { background: #f4f4f4; padding: 0.2em 0.4em; border-radius: 3px; font-size: 0.9em; }
+pre code { background: none; padding: 0; }
+table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+th, td { border: 1px solid #ddd; padding: 0.5em 1em; text-align: left; }
+th { background: #f8f9fa; }
+a { color: #3498db; }
+img { max-width: 100%; height: auto; }
+blockquote { border-left: 4px solid #3498db; margin: 1em 0; padding: 0.5em 1em; background: #f8f9fa; }
+.site-header { margin-bottom: 2rem; padding-bottom: 1rem; border-bottom: 1px solid #eee; }
+.site-header a { text-decoration: none; color: #3498db; font-size: 0.9rem; }
+.highlight pre { background: #272822; color: #f8f8f2; padding: 1em; border-radius: 4px; }
+.admonition { border-left: 4px solid #3498db; padding: 0.5em 1em; margin: 1em 0; background: #f8f9fa; border-radius: 0 4px 4px 0; }
+.admonition-title { font-weight: bold; }
+.admonition.warning { border-color: #f39c12; background: #fef9e7; }
+.admonition.note { border-color: #3498db; background: #eaf2f8; }
+.admonition.tip { border-color: #27ae60; background: #eafaf1; }
+</style>
+</head>
+<body>
+<div class="site-header">
+    <a href="../index.html">Home</a> /
+    <strong>Welcome to TRAPPER Ecosystem Documentation — TRAPPER Knowledge 0.0.1 documentation</strong>
+</div>
+<a class="reference internal image-reference" href="_images/trapper_logo.svg"><img alt="Logo de TRAPPER" class="align-center" src="_images/trapper_logo.svg" style="width: 100%;"/>
+</a>
+<section id="bienvenidos-a-la-documentación-del-ecosistema-trapper">
+<h1>Bienvenidos a la documentación del ecosistema TRAPPER </h1>
+<p>Esta es la central de documentación para el ecosistema TRAPPER — un conjunto modular de componentes que apoyan la investigación y la ciencia ciudadana en la monitorización de vida silvestre.</p>
+<section id="visión-general">
+<h2><a class="toc-backref" href="#id1" role="doc-backlink">Visión general</a></h2>
+<p>El ecosistema TRAPPER consta de varios componentes interrelacionados:</p>
+<ul class="simple">
+<li><p><strong>Trapper Expert</strong> – Trapper Expert es la aplicación web central (TRAPPER), que abarca todas las funcionalidades esenciales del sistema. Cuenta con una interfaz frontend basada en Angular y Bootstrap, combinada con un backend basado en Django. La aplicación utiliza una base de datos PostgreSQL con extensión PostGIS para el manejo de datos espaciales, y emplea RabbitMQ como broker de mensajes con trabajadores Celery para el procesamiento asincrónico de tareas.</p></li>
+<li><p><strong>Trapper Citizen Science</strong> – Aplicación frontend innovadora e inteligente (UI) para TRAPPER, diseñada específicamente para proyectos de ciencia ciudadana.</p></li>
+<li><p><strong>Trapper AI Manager</strong> – Módulo responsable de la integración y configuración de modelos de inteligencia artificial para la detección de objetos y clasificación de especies. Este componente está organizado utilizando el componente web-based Trapper AI Manager y el trabajador Trapper AI Worker. Los trabajadores pueden utilizar GPUs y pueden escalarse o lanzarse en múltiples máquinas.</p></li>
+<li><p><strong>Trapper AI Worker</strong> – Módulo responsable de la integración y configuración de modelos de inteligencia artificial para la detección de objetos y clasificación de especies. Este componente está organizado utilizando el componente web-based Trapper AI Manager y el trabajador Trapper AI Worker. Los trabajadores pueden utilizar GPUs y pueden escalarse o lanzarse en múltiples máquinas.</p></li>
+</ul>
+<p>Cada módulo puede ejecutarse de forma independiente, pero están diseñados para interaccionar en un ecosistema unificado.</p>
+</section>
+<section id="enlaces-de-documentación-de-módulos">
+<h2><a class="toc-backref" href="#id2" role="doc-backlink">Enlaces de documentación de módulos</a></h2>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Módulo</p></th>
+<th class="head"><p>Descripción</p></th>
+<th class="head"><p>Documentación</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Trapper Expert</p></td>
+<td><p>Puente central con panel de administración</p></td>
+<td><p><a class="reference external" href="https://gitlab.com/trapper-project/trapper">Documentación de Trapper Expert</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>UI de ciencia ciudadana</p></td>
+<td><p>Interfaz frontend para ciencia ciudadana</p></td>
+<td><p><a class="reference external" href="https://gitlab.com/trapper-project/trapper-frontend">Documentación del frontend</a></p></td>
+</tr>
+<tr class="row-even"><td><p>AI Manager</p></td>
+<td><p>Gestión de modelos y ejecución de inteligencia artificial</p></td>
+<td><p><a class="reference external" href="https://gitlab.com/trapper-project/trapper-ai">Documentación de Trapper AI</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Trabajador AI</p></td>
+<td><p>Ejecución escalable de inteligencia artificial (GPU/CPÚ)</p></td>
+<td><p><a class="reference external" href="https://gitlab.com/trapper-project/trapper-ai-worker">Documentación del trabajador AI</a></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="arquitectura-y-interacciones">
+<h2><a class="toc-backref" href="#id3" role="doc-backlink">Arquitectura y interacciones</a></h2>
+<img alt="Diagrama de arquitectura" class="align-center" src="_static/architecture_diagram.png"/>
+<p>El ecosistema se basa en <strong>microservicios</strong> que comunican entre sí mediante APIs REST y colas de mensajes:</p>
+<ul class="simple">
+<li><p><strong>Trapper Expert</strong> actúa como coordinador central, gestionando usuarios, metadatos y proyectos.</p></li>
+<li><p><strong>Trapper Citizen Science</strong> se comunica con la API REST del Expert.</p></li>
+<li><p><strong>Trapper AI Manager</strong> proporciona una API y panel de control para gestionar modelos y trabajadores.</p></li>
+<li><p><strong>Trapper AI Worker</strong> se conecta al AI Manager y procesa tareas utilizando Celery y RabbitMQ.</p></li>
+</ul>
+</section>
+<section id="tareas-y-flujos-comunes">
+<h2><a class="toc-backref" href="#id4" role="doc-backlink">Tareas y flujos comunes</a></h2>
+<ul class="simple">
+<li><p>Arrancar el conjunto completo localmente: <a class="reference internal" href="launching_services.html"><span class="doc">Arrancar servicios de TRAPPER</span></a></p></li>
+</ul>
+</section>
+<section id="recursos-útiles">
+<h2><a class="toc-backref" href="#id5" role="doc-backlink">Recursos útiles</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://huggingface.co/OSCF/TrapperAI-v02.2024">Modelos de Trapper AI en HuggingFace</a></p></li>
+</ul>
+</section>
+<section id="licencia-y-autores">
+<h2><a class="toc-backref" href="#id6" role="doc-backlink">Licencia y autores</a></h2>
+<p>todo</p>
+</section>
+</section>
+</body>
+</html>

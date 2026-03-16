@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Overview — trapper-project 1.7.2 documentation (Spanish)</title>
+<style>
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem;
+    line-height: 1.6;
+    color: #333;
+}
+h1, h2, h3, h4 { color: #2c3e50; margin-top: 1.5em; }
+h1 { border-bottom: 2px solid #3498db; padding-bottom: 0.3em; }
+pre { background: #f4f4f4; padding: 1em; overflow-x: auto; border-radius: 4px; }
+code { background: #f4f4f4; padding: 0.2em 0.4em; border-radius: 3px; font-size: 0.9em; }
+pre code { background: none; padding: 0; }
+table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+th, td { border: 1px solid #ddd; padding: 0.5em 1em; text-align: left; }
+th { background: #f8f9fa; }
+a { color: #3498db; }
+img { max-width: 100%; height: auto; }
+blockquote { border-left: 4px solid #3498db; margin: 1em 0; padding: 0.5em 1em; background: #f8f9fa; }
+.site-header { margin-bottom: 2rem; padding-bottom: 1rem; border-bottom: 1px solid #eee; }
+.site-header a { text-decoration: none; color: #3498db; font-size: 0.9rem; }
+.highlight pre { background: #272822; color: #f8f8f2; padding: 1em; border-radius: 4px; }
+.admonition { border-left: 4px solid #3498db; padding: 0.5em 1em; margin: 1em 0; background: #f8f9fa; border-radius: 0 4px 4px 0; }
+.admonition-title { font-weight: bold; }
+.admonition.warning { border-color: #f39c12; background: #fef9e7; }
+.admonition.note { border-color: #3498db; background: #eaf2f8; }
+.admonition.tip { border-color: #27ae60; background: #eafaf1; }
+</style>
+</head>
+<body>
+<div class="site-header">
+    <a href="../index.html">Home</a> /
+    <strong>Overview — trapper-project 1.7.2 documentation</strong>
+</div>
+<a class="reference internal image-reference" href="_images/trapper-logo.png"><img alt="Logo de TRAPPER" class="align-left" src="_images/trapper-logo.png" style="width: 120px;"/>
+</a>
+<section id="resumen">
+<h1>Resumen</h1>
+<p>TRAPPER es una aplicación web de próxima generación, basada en Django, que revoluciona la gestión de proyectos de trampa de cámaras! 🎯</p>
+<p>A medida que la trampa de cámaras se vuelve cada vez más crucial para la investigación ecológica y la conservación de vida silvestre, el desafío de gestionar grandes conjuntos de datos multimedia aumenta exponencialmente. TRAPPER transforma este desafío en una oportunidad proporcionando una plataforma integral y potente basada en inteligencia artificial que maneja todo desde la ingesta de datos hasta análisis avanzados.</p>
+<p>Lo que diferencia a TRAPPER es su enfoque moderno para la gestión de datos de trampa de cámaras: cumplimiento total con el estándar global emergente <a class="reference external" href="https://camtrap-dp.tdwg.org/">Camtrap DP</a>, líneas de procesamiento de AI de vanguardia y flexibilidad de despliegue que se adapta desde la infraestructura de nube hasta la investigación en el campo. Ya sea que seas un investigador trabajando en un estudio de campo pequeño o gestiones proyectos de ciencia ciudadana a gran escala, TRAPPER se adapta a tus necesidades! 🚀</p>
+<section id="trapper-en-un-nutshell">
+<h2>TRAPPER en un nutshell</h2>
+<ul class="simple">
+<li><p><strong>🌍 Estándares Globales</strong>: Soporte completo para el estándar emergente <a class="reference external" href="https://camtrap-dp.tdwg.org/">Camtrap DP</a></p></li>
+<li><p><strong>🤖 Inteligencia Artificial</strong>: Procesamiento automático de datos con detección de objetos, clasificación de especies y protección de privacidad mediante inteligencia artificial</p></li>
+<li><p><strong>🔧 Integración de AI</strong>: Integración fácil de nuevos modelos y algoritmos de IA</p></li>
+<li><p><strong>⚡ Procesamiento escalable</strong>: Procesamiento de imágenes y videos basado en GPU que se adapta a tus necesidades</p></li>
+<li><p><strong>🏗️ Despliegue flexible</strong>: Despliega donde sea - desde laptops hasta infraestructura de nube</p></li>
+<li><p><strong>☁️ Listo para la Nube</strong>: Compatible con Azure, AWS, OVH, MinIO y más</p></li>
+<li><p><strong>📱 Portátil</strong>: Funciona en servidores micro (Raspberry Pi 5, NVIDIA Jetson)</p></li>
+<li><p><strong>👥 Interfaz dual</strong>: Módulo de expertos para investigadores + interfaz amigable para ciencia ciudadana</p></li>
+<li><p><strong>🗄️ Gestión avanzada</strong>: Base de datos espacialmente habilitada con gestión de proyectos robusta</p></li>
+<li><p><strong>🔄 Fuentes Abiertas</strong>: Completamente abierto con desarrollo colaborativo</p></li>
+<li><p><strong>📊 Soporte de medios</strong>: Maneja tanto imágenes como videos de manera fluida</p></li>
+<li><p><strong>🔗 API Primero</strong>: API integral para integraciones y acceso a datos</p></li>
+</ul>
+</section>
+<section id="ecosistema-trapper">
+<h2>Ecosistema TRAPPER</h2>
+<p><a class="reference external" href="https://gitlab.com/trapper-project/trapper/">Trapper Expert</a> — la aplicación web central (TRAPPER), que proporciona todas las funcionalidades del sistema esenciales. Cuenta con una interfaz frontend basada en Angular y Bootstrap, junto con un backend de Django. La aplicación utiliza una base de datos PostgreSQL con la extensión PostGIS para la gestión de datos espaciales, y emplea RabbitMQ como broker de mensajes con trabajadores Celery para el procesamiento asincrónico de tareas.</p>
+<p><a class="reference external" href="https://gitlab.com/trapper-project/trapper-frontend/">Trapper Citizen Science</a> — una aplicación frontend innovadora (UI) para TRAPPER, diseñada específicamente para proyectos de ciencia ciudadana.</p>
+<p><a class="reference external" href="https://gitlab.com/trapper-project/trapper-ai/">Trapper AI</a> — un módulo responsable de la integración y configuración de modelos de IA para detección de objetos y clasificación de especies. Este componente incluye la <strong>Interfaz del Administrador de Trapper AI</strong> web y <a class="reference external" href="https://gitlab.com/trapper-project/trapper-ai-worker/">Trapper AI Worker</a>. Los trabajadores pueden utilizar GPU y se pueden escalar o desplegar en varias máquinas.</p>
+<p><strong>Trapper Jupyter Hub</strong> (no aún lanzado) — un módulo para compartir JupyterHub y cuadernos de Jupyter dentro de TRAPPER, permitiendo a los usuarios explorar y analizar datos utilizando bibliotecas científicas de Python o R.</p>
+<p><a class="reference external" href="https://gitlab.com/trapper-project/trapper-tools/">Trapper Tools</a> — una aplicación CLI de Python para crear y subir paquetes de datos de trampa de cámaras compatibles con el sistema TRAPPER. Esta herramienta se recomienda para subir grandes volúmenes de datos (muchos GB) a la aplicación web TRAPPER. Cuenta con un pipeline automático que puede convertir, empaquetar y subir datos en una sola orden. Opcionalmente también puede disparar el procesamiento posterior a la carga de datos, incluyendo la construcción automática de secuencias y un pipeline de IA para detección de objetos y clasificación de especies tanto para imágenes como videos.</p>
+</section>
+<section id="plantillas-de-despliegue">
+<h2>Plantillas de Despliegue</h2>
+<ul class="simple">
+<li><p><strong>Despliegue flexible</strong>: Compatible con Azure, AWS, OVH, MinIO y más</p></li>
+<li><p><strong>☁️ Listo para la Nube</strong>: Compatible con Azure, AWS, OVH, MinIO y más</p></li>
+<li><p><strong>📱 Portátil</strong>: Funciona en servidores micro (Raspberry Pi 5, NVIDIA Jetson)</p></li>
+<li><p><strong>👥 Interfaz dual</strong>: Módulo de expertos para investigadores + interfaz amigable para ciencia ciudadana</p></li>
+<li><p><strong>🗄️ Gestión avanzada</strong>: Base de datos espacialmente habilitada con gestión de proyectos robusta</p></li>
+<li><p><strong>🔄 Fuentes Abiertas</strong>: Completamente abierto con desarrollo colaborativo</p></li>
+<li><p><strong>📊 Soporte de medios</strong>: Maneja tanto imágenes como videos de manera fluida</p></li>
+<li><p><strong>🔗 API Primero</strong>: API integral para integraciones y acceso a datos</p></li>
+</ul>
+</section>
+<section id="referencias">
+<h2>Referencias</h2>
+<div><p>Para más noticias sobre <strong>TRAPPER</strong> por favor visita el sitio web de la <strong>Fundación para la Conservación Abierta (OSCF)</strong>:</p>
+<p><a class="reference external" href="https://os-conservation.org">https://os-conservation.org</a></p>
+<p>o síguenos en <strong>LinkedIn</strong>:</p>
+<p><a class="reference external" href="https://www.linkedin.com/company/os-conservation/">https://www.linkedin.com/company/os-conservation/</a></p>
+</div>
+<p>Para más información sobre <strong>TRAPPER</strong>, por favor visita el sitio web de la <strong>Fundación para la Conservación Abierta (OSCF)</strong>:</p>
+<p><a class="reference external" href="https://os-conservation.org">https://os-conservation.org</a></p>
+<p>O sigue nuestras publicaciones en <strong>LinkedIn</strong>:</p>
+<p><a class="reference external" href="https://www.linkedin.com/company/os-conservation/">https://www.linkedin.com/company/os-conservation/</a></p>
+</section>
+</section>
+</body>
+</html>

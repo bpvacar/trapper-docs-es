@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Installation — trapper-project 1.7.2 documentation (Spanish)</title>
+<style>
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem;
+    line-height: 1.6;
+    color: #333;
+}
+h1, h2, h3, h4 { color: #2c3e50; margin-top: 1.5em; }
+h1 { border-bottom: 2px solid #3498db; padding-bottom: 0.3em; }
+pre { background: #f4f4f4; padding: 1em; overflow-x: auto; border-radius: 4px; }
+code { background: #f4f4f4; padding: 0.2em 0.4em; border-radius: 3px; font-size: 0.9em; }
+pre code { background: none; padding: 0; }
+table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+th, td { border: 1px solid #ddd; padding: 0.5em 1em; text-align: left; }
+th { background: #f8f9fa; }
+a { color: #3498db; }
+img { max-width: 100%; height: auto; }
+blockquote { border-left: 4px solid #3498db; margin: 1em 0; padding: 0.5em 1em; background: #f8f9fa; }
+.site-header { margin-bottom: 2rem; padding-bottom: 1rem; border-bottom: 1px solid #eee; }
+.site-header a { text-decoration: none; color: #3498db; font-size: 0.9rem; }
+.highlight pre { background: #272822; color: #f8f8f2; padding: 1em; border-radius: 4px; }
+.admonition { border-left: 4px solid #3498db; padding: 0.5em 1em; margin: 1em 0; background: #f8f9fa; border-radius: 0 4px 4px 0; }
+.admonition-title { font-weight: bold; }
+.admonition.warning { border-color: #f39c12; background: #fef9e7; }
+.admonition.note { border-color: #3498db; background: #eaf2f8; }
+.admonition.tip { border-color: #27ae60; background: #eafaf1; }
+</style>
+</head>
+<body>
+<div class="site-header">
+    <a href="../index.html">Home</a> /
+    <strong>Installation — trapper-project 1.7.2 documentation</strong>
+</div>
+<span id="id1"></span><h1>Instalación</h1>
+<p>TRAPPER se proporciona como <a class="reference external" href="https://www.docker.com/">contenedor de Docker</a> y puede ser desplegado en servidores basados en Linux y Windows. Sin embargo, recomendamos una distribución de Linux basada en Debian, por ejemplo <a class="reference external" href="http://www.ubuntu.com/server">Ubuntu Server</a>. TRAPPER utiliza <a class="reference external" href="https://docs.docker.com/compose/">Docker Compose</a>, una herramienta para definir y ejecutar aplicaciones de contenedores Docker multi-contenedor. Con esta tecnología, todos los servicios básicos necesarios para ejecutar TRAPPER (incluidos la base de datos y el servidor FTP) pueden ser desplegados y configurados automáticamente en un servidor dedicado con la posibilidad de configurar servicios específicos manualmente (por ejemplo, un escenario con un servidor de base de datos externo).</p>
+<section id="instalando-docker-community-edition-ce-y-docker-compose">
+<h2>Instalación de Docker Community Edition (CE) &amp; Docker Compose</h2>
+<ol class="arabic simple">
+<li><p>Siguiendo los pasos de la documentación oficial de Docker:</p>
+<ul class="simple">
+<li><p>Ubuntu:
+<a class="reference external" href="https://docs.docker.com/install/linux/docker-ce/ubuntu/">https://docs.docker.com/install/linux/docker-ce/ubuntu/</a></p></li>
+<li><p>Windows:
+<a class="reference external" href="https://hub.docker.com/editions/community/docker-ce-desktop-windows">https://hub.docker.com/editions/community/docker-ce-desktop-windows</a></p></li>
+</ul>
+</li>
+<li><p>Instalar Docker Compose: <a class="reference external" href="https://docs.docker.com/compose/">https://docs.docker.com/compose/</a></p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Para aprender más sobre la tecnología de Docker, incluida la gestión de imágenes y contenedores de Docker, por favor lea la documentación oficial de <a class="reference external" href="https://docs.docker.com/get-started/">Docker</a>.</p>
+</div>
+</section>
+<section id="obteniendo-el-código-fuente-de-trapper">
+<h2>Obtener el código fuente de TRAPPER</h2>
+<ol class="arabic">
+<li><p>Primero, clone el código fuente de TRAPPER en tu repositorio local:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://gitlab.com/trapper-project/trapper.git
+</pre></div>
+</div>
+</li>
+<li><p>Para obtener la versión más actualizada de TRAPPER, cambie a la rama <code class="docutils literal notranslate"><span class="pre">desarrollo</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>git<span class="w"> </span>checkout<span class="w"> </span>desarrollo
+</pre></div>
+</div>
+</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Es mucho más fácil utilizar Git Bash para clonar repositorios de Git en Windows en lugar de usar una línea de comandos estándar: <a class="reference external" href="https://git-scm.com/download/win">https://git-scm.com/download/win</a></p>
+</div>
+</section>
+<section id="ejecutando-trapper">
+<h2>Ejecutar TRAPPER</h2>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Si necesita una configuración personalizada de TRAPPER (por ejemplo, base de datos externa, FTP y servicios de correo electrónico) por favor consulte la sección <a class="reference internal" href="configuration.html#configuration"><span class="std std-ref">Configuración</span></a> para obtener más detalles.</p>
+</div>
+<ol class="arabic">
+<li><p>Copie el archivo <code class="docutils literal notranslate"><span class="pre">trapper.env</span></code> al archivo <code class="docutils literal notranslate"><span class="pre">.env</span></code>, puede hacerlo utilizando el comando:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>cp<span class="w"> </span>trapper.env<span class="w"> </span>.env
+</pre></div>
+</div>
+</li>
+<li><p>Ajuste las variables en el archivo <code class="docutils literal notranslate"><span class="pre">.env</span></code> si utiliza una instalación no estándar, por ejemplo, la base de datos PostgreSQL externa.</p></li>
+<li><p>Ejecute TRAPPER con el siguiente comando:</p>
+<ul>
+<li><p>Producción</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>./start.sh<span class="w"> </span>-pb<span class="w"> </span>prod
+</pre></div>
+</div>
+</li>
+<li><p>Desarrollo</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>./start.sh<span class="w"> </span>-pb<span class="w"> </span>dev
+</pre></div>
+</div>
+</li>
+</ul>
+</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Las banderas <code class="docutils literal notranslate"><span class="pre">-p</span></code> y <code class="docutils literal notranslate"><span class="pre">-b</span></code> indican al script que <code class="docutils literal notranslate"><span class="pre">pulsa</span></code> todas las imágenes de Docker requeridas y que <code class="docutils literal notranslate"><span class="pre">construya</span></code> la imagen <code class="docutils literal notranslate"><span class="pre">trapper</span></code> localmente.
+Para aprender más sobre todas las opciones de ejecución posibles simplemente escriba <code class="docutils literal notranslate"><span class="pre">./start.sh</span></code>. Si necesita una configuración personalizada, por favor consulte la sección <a class="reference internal" href="configuration.html#configuration"><span class="std std-ref">Configuración</span></a> para obtener más detalles.</p>
+</div>
+</section>
+<section id="certificados-ssl">
+<h2>Certificados SSL</h2>
+<p>Si ya tiene certificados SSL para su sitio web de TRAPPER, puede utilizarlos proporcionando las rutas correctas en el archivo de configuración <cite>.env</cite>. Consulte la sección <a class="reference internal" href="configuration.html#configuration-ssl-certificates"><span class="std std-ref">Certificados SSL</span></a> para obtener más detalles. Estos certificados se utilizarán para configurar el servidor proxy <code class="docutils literal notranslate"><span class="pre">nginx</span></code> dentro de un contenedor dedicado. Si no se proporcionan certificados, se generarán automáticamente utilizando la herramienta <a class="reference external" href="https://www.openssl.org/">openssl</a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Puede obtener certificados SSL gratuitos de <a class="reference external" href="https://letsencrypt.org">Let’s Encrypt</a>.</p>
+</div>
+</section>
+</body>
+</html>

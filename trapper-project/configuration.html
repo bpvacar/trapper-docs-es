@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Configuration — trapper-project 1.7.2 documentation (Spanish)</title>
+<style>
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem;
+    line-height: 1.6;
+    color: #333;
+}
+h1, h2, h3, h4 { color: #2c3e50; margin-top: 1.5em; }
+h1 { border-bottom: 2px solid #3498db; padding-bottom: 0.3em; }
+pre { background: #f4f4f4; padding: 1em; overflow-x: auto; border-radius: 4px; }
+code { background: #f4f4f4; padding: 0.2em 0.4em; border-radius: 3px; font-size: 0.9em; }
+pre code { background: none; padding: 0; }
+table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+th, td { border: 1px solid #ddd; padding: 0.5em 1em; text-align: left; }
+th { background: #f8f9fa; }
+a { color: #3498db; }
+img { max-width: 100%; height: auto; }
+blockquote { border-left: 4px solid #3498db; margin: 1em 0; padding: 0.5em 1em; background: #f8f9fa; }
+.site-header { margin-bottom: 2rem; padding-bottom: 1rem; border-bottom: 1px solid #eee; }
+.site-header a { text-decoration: none; color: #3498db; font-size: 0.9rem; }
+.highlight pre { background: #272822; color: #f8f8f2; padding: 1em; border-radius: 4px; }
+.admonition { border-left: 4px solid #3498db; padding: 0.5em 1em; margin: 1em 0; background: #f8f9fa; border-radius: 0 4px 4px 0; }
+.admonition-title { font-weight: bold; }
+.admonition.warning { border-color: #f39c12; background: #fef9e7; }
+.admonition.note { border-color: #3498db; background: #eaf2f8; }
+.admonition.tip { border-color: #27ae60; background: #eafaf1; }
+</style>
+</head>
+<body>
+<div class="site-header">
+    <a href="../index.html">Home</a> /
+    <strong>Configuration — trapper-project 1.7.2 documentation</strong>
+</div>
+<p>The provided text appears to be a documentation for the TRAPPER project, which is an open-source platform for camera trap image analysis using machine learning. The document covers various aspects of setting up and configuring the TRAPPER environment.
+
+To answer your question about how to set up the AI pipeline configuration, here are some key points from the document:
+
+1. **Classification Project**: Configure AI models for object detection and species classification through the Classification Project settings in the Django admin interface.
+2. **Object Detection AI Model**: Select TrapperAIProvider with MegaDetector (v5 or v6 variants).
+3. **Species AI Model**: Select TrapperAIProvider with species classifier (e.g., DeepFaune v1.3).
+4. **Copy AI Classifications**: Copy AI results to user classifications for review.
+5. **Required AI**: Require AI classification before human annotation.
+6. **Confidence and Quality Control**: Set confidence thresholds and quality control parameters, such as:
+	* Species Matching IOU Threshold (default: 0.5)
+	* Observation Type Confidence Warning Threshold
+	* Species Confidence Warning Threshold
+7. **Privacy and Blurring Options**: Configure automatic privacy protection, including blurring humans and vehicles.
+8. **Video Processing**: Configure video-specific settings, such as enabling video support and setting target FPS.
+
+To set up the AI pipeline configuration, follow these steps:
+
+1. Install TrapperAIProvider with MegaDetector (v5 or v6 variants) for object detection and species classification.
+2. Configure Classification Project settings in the Django admin interface.
+3. Set confidence thresholds and quality control parameters as needed.
+4. Enable automatic privacy protection and configure blurring options.
+5. Configure video-specific settings if necessary.
+
+Note that this is a high-level overview of the AI pipeline configuration, and you may need to consult additional documentation or seek expert advice for specific implementation details.</p>
+</body>
+</html>

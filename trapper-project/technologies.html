@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Technology used - software components — trapper-project 1.7.2 documentation (Spanish)</title>
+<style>
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem;
+    line-height: 1.6;
+    color: #333;
+}
+h1, h2, h3, h4 { color: #2c3e50; margin-top: 1.5em; }
+h1 { border-bottom: 2px solid #3498db; padding-bottom: 0.3em; }
+pre { background: #f4f4f4; padding: 1em; overflow-x: auto; border-radius: 4px; }
+code { background: #f4f4f4; padding: 0.2em 0.4em; border-radius: 3px; font-size: 0.9em; }
+pre code { background: none; padding: 0; }
+table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+th, td { border: 1px solid #ddd; padding: 0.5em 1em; text-align: left; }
+th { background: #f8f9fa; }
+a { color: #3498db; }
+img { max-width: 100%; height: auto; }
+blockquote { border-left: 4px solid #3498db; margin: 1em 0; padding: 0.5em 1em; background: #f8f9fa; }
+.site-header { margin-bottom: 2rem; padding-bottom: 1rem; border-bottom: 1px solid #eee; }
+.site-header a { text-decoration: none; color: #3498db; font-size: 0.9rem; }
+.highlight pre { background: #272822; color: #f8f8f2; padding: 1em; border-radius: 4px; }
+.admonition { border-left: 4px solid #3498db; padding: 0.5em 1em; margin: 1em 0; background: #f8f9fa; border-radius: 0 4px 4px 0; }
+.admonition-title { font-weight: bold; }
+.admonition.warning { border-color: #f39c12; background: #fef9e7; }
+.admonition.note { border-color: #3498db; background: #eaf2f8; }
+.admonition.tip { border-color: #27ae60; background: #eafaf1; }
+</style>
+</head>
+<body>
+<div class="site-header">
+    <a href="../index.html">Home</a> /
+    <strong>Technology used - software components — trapper-project 1.7.2 documentation</strong>
+</div>
+<h1>Tecnologías utilizadas - componentes de software</h1>
+<div class="admonition warning">
+<p class="admonition-title">Advertencia</p>
+<p>🚧 Trabajo en progreso</p>
+<p>Esta sección es parcialmente obsoleta y actualmente está bajo desarrollo activo y puede cambiar sin previo aviso. El contenido, los ejemplos y las capturas de pantalla pueden ser incompletos o estar actualizados pronto.</p>
+</div>
+<section id="backend">
+<h2>Backend</h2>
+<p>A continuación, se muestra la lista de los componentes de software más importantes que han sido utilizados para diseñar e implementar Trapper:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="http://www.ubuntu.com">Ubuntu</a>
+Sistema operativo base en el que se desarrolló y probó Trapper.</p></li>
+<li><p><a class="reference external" href="http://postgresql.org">PostgreSQL</a>
+Sistema de gestión de bases de datos relacionales (RDBMS) de código abierto e industria estándar, con <a class="reference external" href="http://postgis.net/">PostGIS</a> como su extensión espacial.</p></li>
+<li><p><a class="reference external" href="http://nginx.org/">nginx</a>
+nginx [motor x] es un servidor HTTP y de proxy inverso, un servidor de correo electrónico y un proxy TCP genérico.</p></li>
+<li><p><a class="reference external" href="http://gunicorn.org">Gunicorn</a>
+Esta aplicación puramente en Python se utiliza para servir el proyecto Trapper.</p></li>
+<li><p><a class="reference external" href="http://www.celeryproject.org/">Celery</a>
+Esta aplicación de Python se utiliza para ejecutar tareas de manera asíncrona, lo que permite a Trapper funcionar más rápido y eficiente. Celery se utiliza para generar miniaturas de archivos grandes o videos, o para procesar colecciones cargadas por los usuarios.</p></li>
+<li><p><a class="reference external" href="https://www.djangoproject.com/">Django</a>
+Componente central de Trapper, un marco web de alto nivel mantenido por la Fundación Django Software. El marco Django simplifica y acelera significativamente la creación de sitios web complejos con bases de datos y enfatiza la reutilización y la pluggabilidad de sus componentes. Además, se han utilizado una variedad de aplicaciones de terceros de código abierto de Django para desarrollar Trapper. Para obtener una lista completa de estas aplicaciones, consulte <a href="#id4"><span class="problematic" id="id5">`este archivo &lt;&gt;`_</span></a>.</p></li>
+<li><p><a class="reference external" href="https://github.com/umap-project/umap/">uMAP</a>
+uMap permite crear mapas con capas de OpenStreetMap en un minuto y incorporarlos en su sitio. Utiliza django-leaflet-storage y Leaflet.Storage, construidos sobre Django y Leaflet.</p></li>
+</ul>
+</section>
+<section id="frontend">
+<h2>Frontend</h2>
+<p>La interfaz de usuario de Trapper se desarrolló con base en tres soluciones independientes:</p>
+<ol class="arabic simple">
+<li><p>Plantillas HTML (versión 5) y sus estilos CSS (impulsados por <a class="reference external" href="http://sass-lang.com/">SASS</a>)</p></li>
+<li><p>Un conjunto de scripts escritos en JavaScript puro (ECMAscript 5).</p></li>
+<li><p>Todas las bibliotecas y marcos externos incluidos en el proyecto:</p></li>
+</ol>
+<ul class="simple">
+<li><p>Twitter Bootstrap
+<a class="reference external" href="https://github.com/twbs/bootstrap-sass">Bootstrap Sass Oficial</a>, que es la versión SASS oficial de <a class="reference external" href="http://getbootstrap.com/">Twitter Bootstrap</a>.
+Esta biblioteca proporciona un conjunto de componentes HTML y estilos CSS utilizados para crear el esqueleto de Trapper.</p></li>
+<li><p>Font Awesome
+<a class="reference external" href="http://fortawesome.github.io/Font-Awesome/">Font Awesome</a>, webfont de iconos vectoriales utilizados en el proyecto.</p></li>
+<li><p>Angular JS
+<a class="reference external" href="https://angularjs.org/">Angular JS</a>. Todas las grillas/tablas, incluyendo sus filtros, se han creado encima de este marco de Google.</p></li>
+<li><p>Angular Cookies
+Módulo oficial <a class="reference external" href="https://github.com/angular/bower-angular-cookies">angular</a> para la gestión de cookies.</p></li>
+<li><p>Angular Sanitize
+Módulo oficial <a class="reference external" href="https://github.com/angular/bower-angular-sanitize">angular</a> que mejora la unión de datos en plantillas de angular.</p></li>
+<li><p>Moment
+Biblioteca extremadamente poderosa <a class="reference external" href="http://momentjs.com/">Moment</a> para el análisis y manipulación de fechas.</p></li>
+<li><p>Select2
+Solución completa <a class="reference external" href="https://select2.github.io/">Select2</a> que extiende los controles select HTML por defecto.</p></li>
+<li><p>Select2 Bootstrap CSS
+Estilos de CSS <a class="reference external" href="https://github.com/t0m/select2-bootstrap-css">para Select2</a>, para adaptar su estilo a Twitter Bootstrap.</p></li>
+<li><p>Bootstrap WYSIHTML5
+Plugin JavaScript <a class="reference external" href="https://github.com/Waxolunist/bootstrap3-wysihtml5-bower">que agrega un editor de texto WYSIWYG</a> al table.</p></li>
+<li><p>Bootstrap Datepicker <a class="reference external" href="http://eternicode.github.io/bootstrap-datepicker/">http://eternicode.github.io/bootstrap-datepicker/</a>
+<a class="reference external" href="http://eternicode.github.io/bootstrap-datepicker/">Widget de fecha</a> simple.</p></li>
+<li><p>Jquery Timepicker
+Widget Jquery <a class="reference external" href="http://jonthornton.github.io/jquery-timepicker/">que es solo un reloj</a>.</p></li>
+<li><p>Bootstrap Datetimepicker
+Widget de JavaScript <a class="reference external" href="http://eonasdan.github.io/bootstrap-datetimepicker/">que combina ambos reloj y fecha picker</a>.</p></li>
+<li><p>Video JS
+Esta biblioteca <a class="reference external" href="http://www.videojs.com/">extiende a los jugadores de video HTML5 estándar</a>.</p></li>
+<li><p>Video JS Rangeslider
+Plugin <a class="reference external" href="https://github.com/danielcebrian/rangeslider-videojs">de Video JS</a> que permite establecer y obtener secuencias de video.</p></li>
+</ul>
+</section>
+</body>
+</html>

@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tutorial — trapper-project 1.7.2 documentation (Spanish)</title>
+<style>
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem;
+    line-height: 1.6;
+    color: #333;
+}
+h1, h2, h3, h4 { color: #2c3e50; margin-top: 1.5em; }
+h1 { border-bottom: 2px solid #3498db; padding-bottom: 0.3em; }
+pre { background: #f4f4f4; padding: 1em; overflow-x: auto; border-radius: 4px; }
+code { background: #f4f4f4; padding: 0.2em 0.4em; border-radius: 3px; font-size: 0.9em; }
+pre code { background: none; padding: 0; }
+table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+th, td { border: 1px solid #ddd; padding: 0.5em 1em; text-align: left; }
+th { background: #f8f9fa; }
+a { color: #3498db; }
+img { max-width: 100%; height: auto; }
+blockquote { border-left: 4px solid #3498db; margin: 1em 0; padding: 0.5em 1em; background: #f8f9fa; }
+.site-header { margin-bottom: 2rem; padding-bottom: 1rem; border-bottom: 1px solid #eee; }
+.site-header a { text-decoration: none; color: #3498db; font-size: 0.9rem; }
+.highlight pre { background: #272822; color: #f8f8f2; padding: 1em; border-radius: 4px; }
+.admonition { border-left: 4px solid #3498db; padding: 0.5em 1em; margin: 1em 0; background: #f8f9fa; border-radius: 0 4px 4px 0; }
+.admonition-title { font-weight: bold; }
+.admonition.warning { border-color: #f39c12; background: #fef9e7; }
+.admonition.note { border-color: #3498db; background: #eaf2f8; }
+.admonition.tip { border-color: #27ae60; background: #eafaf1; }
+</style>
+</head>
+<body>
+<div class="site-header">
+    <a href="../index.html">Home</a> /
+    <strong>Tutorial — trapper-project 1.7.2 documentation</strong>
+</div>
+<span id="id1"></span>
+<h1>Tutorial</h1>
+<div class="admonition warning">
+<p class="admonition-title">Advertencia</p>
+<p>🚧 En desarrollo</p>
+<p>Esta sección es parcialmente obsoleta y actualmente está en desarrollo activo y puede cambiar sin previo aviso. El contenido,
+ejemplos y capturas de pantalla pueden ser incompletos o estar actualizados pronto.</p>
+</div>
+<p><cite>Colaboradores:</cite></p>
+<p><cite>Tim R. Hofmeester (Universidad Agrícola Sueca, Departamento de Vida Silvestre, Peces y Estudios Ambientales)</cite></p>
+<p><cite>Karolina Kuczkowska y Jakub W. Bubnicki (Fondo de Conservación Científica Abierta)</cite></p>
+<p><cite>Claude Sonnet 4 (IA)</cite></p>
+<p>Los guías a continuación describen cómo utilizar las funcionalidades centrales de TRAPPER.</p>
+<p>El primer manual describe el proceso de subir sus datos al servidor Trapper.
+Para empezar a clasificar <em>Recursos</em>, necesita crear un <em>Proyecto de Clasificación</em> y un <em>Clasificador</em>,
+tal como se describe en el segundo manual, y un tercer manual para clasificar <em>Recursos</em> una vez tenga un <em>Proyecto de Clasificación</em> en ejecución.</p><section id="abriendo-y-iniciando-sesión-en-trapper">
+<h2>Abrir y iniciar sesión en TRAPPER</h2>
+<p>Accede a la <a class="reference external" href="https://demo.trapper-project.org/">instancia de demostración</a> y regístrate en el servidor TRAPPER.
+Una vez que tu cuenta esté activada por un administrador, podrás iniciar sesión en la misma página utilizando tu dirección de correo electrónico y contraseña.</p>
+</section><p>The provided text is a tutorial on how to use the TRAPPER system, which appears to be a platform for managing and analyzing data from camera traps. The tutorial covers five main steps: adding locations, adding resources (images), adding deployments, adding resources to TRAPPER, and configuring AI providers.
+
+Here are some key points that can be extracted from the text:
+
+1. **Adding Locations**: The first step is to add locations to TRAPPER using a .csv file containing location data.
+2. **Adding Resources**: Once locations are added, resources (images) can be uploaded into TRAPPER using either the `trapper-tools` command-line tool or the web interface.
+3. **Adding Deployments**: After uploading resources, deployments can be created by adding metadata to each resource.
+4. **Configuring AI Providers**: To enable automatic processing of data, AI providers need to be configured in TRAPPER.
+5. **AI Pipeline Setup**: The AI pipeline needs to be set up to process the uploaded data.
+
+Some key commands and flags mentioned in the tutorial are:
+
+* `trapper-tools pipeline --data-path /path/to/data --convert --trigger`: This command runs the entire automated workflow, including converting media files, creating a data package, uploading it via FTPS, and triggering automatic processing.
+* `trapper-tools package --data-path /path/to/data`: This command creates a data package with metadata extraction.
+* `trapper-tools upload --file-yaml package.yaml --file-zip package.zip --trigger`: This command uploads the created data package via FTPS and triggers automatic processing.
+
+Overall, the tutorial provides a comprehensive guide to using TRAPPER for managing and analyzing camera trap data.</p><section id="cómo-crear-un-clasificador-y-proyecto-de-clasificación-en-trapper">
+<h2>Cómo crear un Clasificador y Proyecto de clasificación en TRAPPER</h2>
+<section id="crear-un-clasificador">
+<span id="tutorial-crear-clasificador"></span><h3>1. Crear un Clasificador</h3>
+<p>En TRAPPER, las imágenes se clasifican en <em>Proyectos de clasificación</em> utilizando un <em>Clasificador</em>. Una de
+las grandes ventajas de TRAPPER es que investigadores o estudiantes pueden construir sus propios
+<em>Clasificadores</em> y <em>Proyectos de clasificación</em> en función de la pregunta de investigación. Un <em>Clasificador</em>
+basicamente describe un conjunto de atributos utilizados al anotar una imagen o secuencia de imágenes.</p>
+<p>En el menú superior, seleccione <em>Clasificación</em> &gt; <em>Agregar clasificador</em>. Primero hay algunas propiedades
+del clasificador requeridas que debes llenar, como nombre y plantilla. Además, hay varios atributos
+que se han vuelto obligatorios en la última versión de Trapper, que son especie, tipo de observación,
+cuenta y 'establecido'. El 'establecido' y el tipo de observación se agregaron para hacer más fácil
+incluir una primera revisión de imágenes por parte del algoritmo de aprendizaje automático de MegaDetector de Microsoft, que identifica automáticamente las imágenes vacías de aquellas que contienen un humano, un animal o un vehículo. También puedes agregar especies que deseas clasificar según entradas en la lista de especies.</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Los administradores pueden agregar especies a la lista de especies general en el panel de administración bajo <cite>Especies</cite>
+ya sea una sola especie a la vez o utilizando un archivo .csv, o descargar taxones para clases enteras
+de Catalogue of Life.</p>
+</div>
+<img alt="forma del clasificador parte 1" src="_images/classificator_form_1.png"/>
+<p>Un poco más abajo en la página, ves muchas opciones diferentes, que explicaré paso a paso.</p>
+<p>Hay dos tipos de atributos: atributos estáticos y dinámicos. Los atributos estáticos son atributos que se
+dan solo una vez para cada recurso, por ejemplo, 'establecido'. Los atributos dinámicos son atributos
+que se pueden dar varias veces para un mismo recurso, por ejemplo, la especie o el sexo de un animal
+registrado por la cámara trampa.</p>
+<p>Hay varios atributos predefinidos disponibles para agregar rápidamente a tu <em>Clasificador</em> marcando las casillas.</p>
+<img alt="forma del clasificador parte 2" src="_images/classificator_form_2.png"/>
+<p>Luego puedes agregar atributos personalizados en la forma de atributo personalizado. Esta forma da
+mucho libertad para determinar tus propios atributos. A continuación, se muestran los atributos de un ejemplo
+<em>Clasificador</em>.</p>
+<img alt="clasificador de ejemplo terminado" src="_images/example_classificator.png"/>
+<p>Puedes verificar todos los <em>Clasificadores</em> en tu servidor TRAPPER seleccionando <em>Clasificación</em> &gt;
+<em>Clasificadores</em>.</p>
+</section>
+<section id="crear-un-proyecto-de-clasificación">
+<h3>2. Crear un Proyecto de clasificación</h3>
+<p>Una vez que hayas creado tu <em>Clasificador</em>, puedes crear un <em>Proyecto de clasificación</em> para empezar
+clasificando tus recursos. Puedes crear un nuevo <em>Proyecto de clasificación</em> seleccionando <em>Clasificación</em>
+&gt; <em>Agregar proyecto de clasificación</em>.</p>
+<img alt="forma de agregar proyecto de clasificación" src="_images/classification_project_form.png"/>
+<p>Aquí puedes especificar el nombre del <em>Proyecto de clasificación</em>, el <em>Proyecto de investigación</em> al que pertenece
+el <em>Proyecto de clasificación</em>, qué <em>Clasificador</em> y proveedor AI por defecto utilizar, y qué usuarios están involucrados en el <em>Proyecto de clasificación</em>. Cuando hayas terminado de llenar todos los detalles, haz clic en <em>Agregar proyecto de clasificación</em>. Ahora has creado un <em>Proyecto de clasificación</em>.</p>
+<p>Puedes verificar todos los Proyectos de clasificación a los que tienes acceso seleccionando <em>Clasificación</em>
+&gt; <em>Proyectos de clasificación</em>.</p>
+</section>
+<section id="agregar-recursos-a-un-proyecto-de-clasificación">
+<h3>3. Agregar recursos a un Proyecto de clasificación</h3>
+<p>Para poder clasificar <em>Recursos</em>, debes agregarlos a tu <em>Proyecto de clasificación</em>. Para hacer esto, primero
+ve a tu <em>Proyecto de investigación</em> seleccionando <em>Investigación</em> &gt; <em>Proyectos de investigación</em> y haciendo clic en el lupa al lado de tu proyecto de investigación.</p>
+<p>Ahora verás una selección de todas las <em>Colecciones</em> que están vinculadas al <em>Proyecto de investigación</em>.</p>
+<img alt="lista de colecciones del proyecto de investigación" src="_images/research_project_collections.png"/>
+<p>Selecciona una <em>Colección</em> haciendo clic en ella y bajo <em>Acciones</em> &gt; <em>Más</em> selecciona 'Agregar a Proyecto
+de clasificación'.</p>
+<p>Tienes ahora <em>Recursos</em> en tu <em>Proyecto de clasificación</em> que pueden ser clasificados.</p>
+</section>
+</section><section id="cómo-clasificar-imágenes-en-trapper">
+<h2>Cómo clasificar imágenes en TRAPPER</h2>
+<section id="ir-a-la-página-de-clasificación">
+<h3>1. Ir a la página de clasificación</h3>
+<p>En el menú superior, selecciona <em>Clasificación</em> &gt; <em>Proyectos de clasificación</em>. Ahora estás en la pantalla de inicio de todos los proyectos de clasificación a los que tienes acceso. Verás información sobre cada <em>proyecto de clasificación</em>, incluyendo su nombre, el <em>proyecto de investigación</em> al que pertenece, su estado y <em>Acciones</em>.</p>
+<img alt="lista de proyectos de clasificación" src="_images/classification_projects_list_2.png"/>
+<p>Para seleccionar el <em>proyecto de clasificación</em> en el que deseas trabajar, selecciona la lupa debajo de <em>Acciones</em>.</p>
+<img alt="detalles del proyecto de clasificación" src="_images/classification_project_details.png"/>
+<p>Estás ahora en la pantalla de inicio del <em>proyecto de clasificación</em> seleccionado. Aquí ves más información sobre el <em>proyecto de clasificación</em>, incluyendo qué <em>Clasificador</em> se utiliza, cuáles son las <em>Colecciones</em> en el proyecto y a qué <em>proyecto de investigación</em> pertenece el <em>proyecto de clasificación</em>. Además, puedes ver cuántos de los <em>Recursos</em> han sido Clasificados y Aprobados.</p>
+<p>Ve al final de la página, donde encontrarás las diferentes <em>Colecciones</em> en el <em>proyecto de clasificación</em> (por ejemplo, las diferentes rondas durante las cuales se colocaron cámaras en el campo). Escribe el nombre del <em>Diseño</em> dentro de una <em>Colección</em> que deseas clasificar y selecciona. Esto asegura que estás clasificando un diseño específico, lo que facilita mantener una visión general durante la clasificación. Una vez que hayas seleccionado el <em>diseño</em>, selecciona el símbolo de la vista para iniciar la clasificación.</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Asegúrate de generar secuencias para tu colección seleccionando la colección y haciendo clic en ‘(Re)construir secuencias’. Puedes especificar un intervalo de tiempo entre secuencias. El valor por defecto es 5, el uso regular es 15 minutos.</p>
+</div>
+</section>
+<section id="clasificar-una-secuencia-usando-formularios-de-clasificación-iniciales">
+<h3>2. Clasificar una secuencia usando formularios de clasificación iniciales</h3>
+<p>Verás ahora una pantalla como la siguiente. Puedes ver las diferentes <em>Recursos</em> (imágenes) con un número naranja. Este es el <em>número de secuencia</em>.</p>
+<img alt="lista de recursos en secuencias para clasificar" src="_images/classify_sequences.png"/>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Para evitar problemas al clasificar la misma <em>Diseño</em>, no comiences a clasificar un diseño si ninguna de las secuencias ha sido clasificada aún. Puedes ver si un recurso ha sido clasificado por una marca verde (nota 3 recursos - una secuencia - clasificados y otros no clasificados en la captura de pantalla anterior).
+A la vez, asegúrate de clasificar todas las secuencias en un <em>Diseño</em> (mantén el registro del diseño que estás clasificando). Si no puedes terminar un diseño, comunícate con tu administrador.</p>
+</div>
+<p>Puedes ampliar imágenes haciendo clic en la miniatura. Puedes desplazarte a través de las imágenes ampliadas con tus teclas de flecha. Es siempre bueno comprobar toda la secuencia antes de clasificarla para asegurarte de no haber pasado por alto individuos en las miniaturas.</p>
+<img alt="vista individual de recurso" src="_images/resource_enlarged.png"/>
+<p>Una vez que hayas decidido cuántos individuos y qué especie está visible en la <em>secuencia</em>, es hora de clasificarla. Para hacer esto, haz clic en el número de secuencia. Esto seleccionará todas las imágenes en la secuencia. Puedes ahora hacer clic en ‘Clasificar’ en la parte superior de la pantalla para clasificar toda la secuencia. <strong>Asegúrate de verificar imágenes vacías al final de la secuencia, ya que es bueno clasificarlas por separado como ‘tipo de observación = en blanco’.</strong></p>
+<p>En la vista de clasificación, rellena la información correcta para la secuencia. Clasificas ‘is_setup’ como <cite>Verdadero</cite> para imágenes de configuración y pruebas, puedes eliminar todos los atributos dinámicos haciendo clic en el cruce rojo.</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Clasifica <strong>recursos vacíos</strong> como <cite>Tipo de observación = En blanco</cite>.</p>
+</div>
+<p>De lo contrario, mantén el valor predeterminado <cite>Falso</cite> y agrega la información de los atributos dinámicos.</p>
+<img alt="modal con formulario de clasificación" src="_images/classify_modal_form.png"/>
+<p>Los atributos dinámicos son atributos que se pueden dar varias veces para una secuencia. En este caso, proporcionan información sobre el tipo de observación, la especie del animal, si la observación contiene uno o más animales, sexo, edad y comportamiento de los animales,
+y un valor de cadena personalizado (como especificado en el <em>Clasificador</em>) e id individual.</p>
+<p>En el formulario de clasificación estándar hay tres atributos obligatorios:</p>
+<ol class="arabic simple">
+<li><p>Tipo de observación: tipo de observación (Humano/Vehículo/Animal/En blanco/Descalificado/No identificado)</p></li>
+<li><p>Especie: especie del animal</p></li>
+<li><p>Sexo: sexo del animal</p></li>
+</ol>
+</section>
+<section id="agregar-bordes-de-selección">
+<h3>3. Agregar bordes de selección</h3>
+<p>TRAPPER proporciona la capacidad de agregar bordes de selección a cada clasificación para delimitar dónde se encuentran los objetos (animales, humanos o vehículos). Estos bordes de selección ayudan en el entrenamiento de algoritmos de aprendizaje automático para la identificación automática de especies.</p>
+<p><strong>Usando la interfaz de frontend de ciencia ciudadana</strong></p>
+<p>Para la mayoría de los usuarios, se recomienda utilizar la nueva <strong>interfaz de frontend de ciencia ciudadana</strong>, que proporciona una interfaz intuitiva para dibujar bordes de selección directamente en las imágenes durante el proceso de clasificación.</p>
+<p>Para acceder a la interfaz de frontend de ciencia ciudadana:</p>
+<ol class="arabic simple">
+<li><p>Navega hasta tu proyecto de clasificación</p></li>
+<li><p>Selecciona el diseño que deseas trabajar en él</p></li>
+<li><p>Haga clic en un recurso para abrirlo en la interfaz de frontend de ciencia ciudadana</p></li>
+<li><p>Dibuja bordes de selección haciendo clic y arrastrando sobre la imagen</p></li>
+<li><p>Asocia cada borde de selección con las características de clasificación adecuadas</p></li>
+</ol>
+<p>La interfaz de frontend de ciencia ciudadana almacena automáticamente los bordes de selección como parte del proceso de clasificación y proporciona un flujo de trabajo acelerado para la anotación rápida.</p>
+<p><strong>Usando la interfaz experta</strong></p>
+<p>Para usuarios avanzados que necesiten acceso a características de clasificación detalladas, también puedes agregar bordes de selección mediante la interfaz experta. Para hacer esto, ve a la vista de clasificación clásica haciendo clic en ‘Detalles’ debajo de una miniatura.</p>
+<img alt="vista de detalles del recurso para clasificar" src="_images/bboxes1.png"/>
+<p>Puedes agregar un borde de selección haciendo clic en el símbolo de la mano verde en la clasificación del usuario. Esto te llevará a la interfaz de dibujo de bordes de selección.</p>
+<img alt="vista de dibujar bordes de selección" src="_images/bboxes2.png"/>
+<p>Dibuja una caja alrededor del objeto lo más ajustada posible. Puedes entonces especificar qué campo de atributo dinámico debe estar vinculado a este borde de selección.</p>
+<img alt="vista de dibujar bordes de selección con bordes dibujados" src="_images/bboxes3.png"/>
+<p>Haga clic en ‘Guardar’ para agregar el borde de selección a la clasificación. Puedes ver los bordes de selección guardados en la pantalla de clasificación.</p>
+<img alt="vista de detalles del recurso para clasificar con bordes dibujados" src="_images/bboxes4.png"/>
+</section>
+</section><section id="interfaces-de-anotación-dual-en-trapper">
+<h2>Interfaces de anotación dual en TRAPPER</h2>
+<p>TRAPPER proporciona dos interfaces diferentes para la anotación y clasificación de imágenes, cada una diseñada
+para casos de uso y tipos de usuarios diferentes:</p>
+<section id="interface-experto-vs-frontend-de-ciencia-cívica">
+<h3>Interface experto vs. frontend de ciencia cívica</h3>
+<p><strong>Interface experto (clásico)</strong></p>
+<p>La interfaz experto proporciona acceso completo a todas las características de TRAPPER y está diseñada para:</p>
+<ul class="simple">
+<li><p>Investigadores y usuarios experimentados que necesitan control total sobre los parámetros de clasificación</p></li>
+<li><p>Proyectos que requieren captura detallada de metadatos y flujos de trabajo de anotación complejos</p></li>
+<li><p>Tareas administrativas y gestión de proyectos avanzados</p></li>
+<li><p>Usuarios que necesitan acceso a todas las atributos del clasificador y características avanzadas</p></li>
+</ul>
+<p>Acceda a la interfaz experto a través de la aplicación web principal de TRAPPER en la URL de su servidor.</p>
+<p><strong>Frontend de ciencia cívica</strong></p>
+<p>El frontend de ciencia cívica ofrece una interfaz simplificada y amigable diseñada para:</p>
+<ul class="simple">
+<li><p>Contribuyentes voluntarios y científicos ciudadanos</p></li>
+<li><p>Proyectos de anotación de datos a gran escala que requieren muchos participantes</p></li>
+<li><p>Proyectos donde la facilidad de uso es prioritaria sobre la completitud de características</p></li>
+<li><p>Entrenamiento de nuevos usuarios antes de pasar a la interfaz experto</p></li>
+</ul>
+<p>El frontend de ciencia cívica simplifica el proceso de clasificación mientras mantiene la calidad y compatibilidad
+de los datos con el sistema principal de TRAPPER.</p>
+<p><strong>Elección de la interfaz adecuada</strong></p>
+<ul class="simple">
+<li><p>Utilice la <strong>interfaz experto</strong> para trabajos de investigación detallados, tareas administrativas y cuando necesite
+acceso a todas las características</p></li>
+<li><p>Utilice el <strong>frontend de ciencia cívica</strong> para proyectos de anotación voluntaria, sesiones de entrenamiento y
+cuando priorice la facilidad de uso</p></li>
+<li><p>Ambas interfaces funcionan con los mismos datos subyacentes, por lo que puede utilizarlas intercambiablemente según sus necesidades</p></li>
+</ul>
+<p><strong>Compatibilidad de datos</strong></p>
+<p>Clasificaciones y anotaciones creadas en cualquiera de las interfaces son completamente compatibles y pueden ser
+vistas y editadas en ambos sistemas. Esto permite flujos de trabajo flexibles donde inicialmente se pueden hacer clasificaciones
+en el frontend de ciencia cívica y luego refinarse en la interfaz experto.</p>
+</section>
+</section><section id="camtrap-dp-data-export">
+<h2>Exportación de datos Camtrap DP</h2>
+<p>TRAPPER proporciona una amplia gama de funcionalidades para exportar datos en el formato <strong>Pakete de Datos de Cámara Trampa (Camtrap DP)</strong>, que es la norma TDWG para el intercambio de datos de cámaras trampas. Esta función permite exportar sus datos de TRAPPER para análisis, archivo o compartir con otros investigadores y plataformas.</p>
+<section id="qué-es-camtrap-dp">
+<h3>¿Qué es Camtrap DP?</h3>
+<p>Camtrap DP es un formato de datos estándar desarrollado por la Organización de Estándares de Información Biodiversidad (TDWG) específicamente para los datos de cámaras trampas. Esto garantiza que los conjuntos de datos de cámaras trampas puedan ser compartidos, comparados y analizados fácilmente en diferentes plataformas y grupos de investigación.</p>
+<p>El formato incluye:</p>
+<ul class="simple">
+<li><p>Metadatos estructurados sobre despliegues, ubicaciones y archivos multimedia</p></li>
+<li><p>Datos de observación y anotación estandarizados</p></li>
+<li><p>Información taxonómica alineada con bases de datos de biodiversidad estándar</p></li>
+<li><p>Documentación completa del proyecto y del conjunto de datos</p></li>
+</ul>
+<p>Para obtener más información, consulte la <a class="reference external" href="https://camtrap-dp.tdwg.org/">documentación oficial de Camtrap DP</a>.</p>
+</section>
+<section id="exportar-datos-de-trapper">
+<h3>Exportando datos desde TRAPPER</h3>
+<p><strong>Exportación a través de la interfaz web</strong></p>
+<p>Navegue hasta su vista de detalles del proyecto de clasificación en TRAPPER y haga clic en el botón <strong>Exportar resultados</strong>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>https://<span class="o">{</span>tu-servidor<span class="o">}</span>/media_classification/project/detail/<span class="o">{</span>id_proyecto<span class="o">}</span>/
+</pre></div>
+</div>
+<p>O navegue directamente a la página de exportación:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>https://<span class="o">{</span>tu-servidor<span class="o">}</span>/media_classification/classification/export/<span class="o">{</span>id_proyecto<span class="o">}</span>/
+</pre></div>
+</div>
+<p>Rellene el formulario de opciones de exportación:</p>
+<figure class="align-default" id="id5">
+<img alt="Formulario de opciones de exportación Camtrap DP" src="_images/export_camtrapdp.png"/>
+<figcaption>
+<p><span class="caption-text">Configure su paquete Camtrap DP</span></p>
+</figcaption>
+</figure>
+<p><strong>Archivos Generados</strong></p>
+<p>El proceso de exportación crea un paquete completo Camtrap DP que contiene:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">datapackage.json</span></code>: Descriptor principal del paquete con metadatos</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">deployments.csv</span></code>: Información de despliegue (cuándo y dónde estuvieron activas las cámaras)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">media.csv</span></code>: Información y metadatos de archivos multimedia</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">observations.csv</span></code>: Datos de clasificación y observación</p></li>
+</ul>
+</section>
+</section><p>The provided code is a Python script that generates and downloads packages from the TRAPPER API. The script uses the `requests` library to make HTTP requests to the API.
+
+Here's a breakdown of the code:
+
+1. Importing libraries: The script imports the `requests` library for making HTTP requests.
+2. Defining constants: The script defines several constants, including the API endpoint URL, API token, and package name.
+3. Generating package parameters: The script generates parameters for the package generation request using a dictionary.
+4. Making package generation request: The script makes an HTTP POST request to the API with the generated parameters.
+5. Getting download URL: The script extracts the download URL from the response JSON.
+6. Downloading package: The script uses the `requests` library to make an HTTP GET request to the download URL and saves the package to a file.
+
+The code also includes error handling for cases where the API returns an error response or if the package generation fails.
+
+To use this script, you'll need to replace the placeholders (`your-api-token`, `package_name`, etc.) with your actual API token and other required values.</p><section id="comportamiento-de-zona-horaria-en-trapper">
+<h2>Comportamiento de zona horaria en TRAPPER</h2>
+<p>La zona horaria predeterminada para la aplicación TRAPPER es <strong>Europa/Varsavia</strong>. Puede configurar su zona horaria de trabajo en la pestaña de ajustes de perfil de usuario (haga clic en su nombre de usuario en la esquina superior derecha para acceder a esta vista).</p>
+<img alt="vista de ajustes del perfil del usuario" src="_images/user_profile.png"/>
+<p>La zona horaria de trabajo se utilizará:</p>
+<ul class="simple">
+<li><p>para mostrar correctamente las notificaciones del sistema (por ejemplo, los tiempos de completación de tareas asincrónicas en su panel de control),</p></li>
+<li><p>como valor de zona horaria predeterminado en formularios.</p></li>
+</ul>
+<section id="horario-de-ahorro-de-energía-electrica">
+<h3>Hora de ahorro de energía eléctrica</h3>
+<p>Si bien no se recomienda, es posible saltarse el comportamiento predeterminado respecto al Hora de Ahorro de Energía Eléctrica.</p>
+<p>Si la cámara trampa en una ubicación dada <em>no utiliza</em> el Hora de Ahorro de Energía Eléctrica (es decir, no mueve su temporizador una hora hacia adelante en la primavera y una hora hacia atrás en el otoño), debe marcar la bandera <code class="docutils literal notranslate"><span class="pre">ignorar_Hora_de_Ahorro</span></code> con <code class="docutils literal notranslate"><span class="pre">Verdadero</span></code>.
+Con esa configuración, todos los timestamps en el metadatos grabados de esa ubicación (<code class="docutils literal notranslate"><span class="pre">Despliegue.fecha_inicio</span></code>, <code class="docutils literal notranslate"><span class="pre">Despliegue.fecha_fin</span></code> y <code class="docutils literal notranslate"><span class="pre">Recursos.fecha_registro</span></code>) se procesarán ignorando el Hora de Ahorro de Energía Eléctrica (de lo contrario, se consideraría en la procesamiento de timestamps).</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Cuando esta documentación menciona dos <em>Ubicaciones</em> con <strong>la misma especificación de zona horaria</strong>, se refiere a que tanto el campo <code class="docutils literal notranslate"><span class="pre">zona_horaria</span></code> como la bandera <code class="docutils literal notranslate"><span class="pre">ignorar_Hora_de_Ahorro</span></code> tienen el mismo valor, ya que solo ambos valores juntos describen correctamente la lógica del procesamiento de timestamps (es decir, objetos datetime) en TRAPPER.</p>
+</div>
+</section>
+<section id="zona-horaria-se-establece-para-la-ubicación">
+<h3>Zona horaria se establece para Ubicación</h3>
+<p>Los objetos <em>Ubicación</em> tienen un campo <em>zona horaria</em> y una bandera <code class="docutils literal notranslate"><span class="pre">ignorar_Hora_de_Ahorro</span></code>. Debe especificarlos en el formulario cuando agregue ubicaciones de alguna de las siguientes maneras:</p>
+<ul class="simple">
+<li><p>utilizando la vista del mapa con el formulario para agregar una sola ubicación,</p></li>
+<li><p>importando ubicaciones desde un archivo CSV o GPX (importación en masa),</p></li>
+<li><p>creando ubicaciones automáticamente utilizando importaciones de despliegues en masa.</p></li>
+</ul>
+<p>Es muy importante establecer correctamente la información de zona horaria para cada <em>Ubicación</em>, ya que esta información se utiliza para procesar timestamps en todos los <em>Despliegues</em> y <em>Recursos</em> conectados a una ubicación dada.</p>
+</section>
+<section id="comportamiento-de-zona-horaria-durante-importación-csv">
+<h3>Comportamiento de zona horaria durante la importación CSV</h3>
+<p>Cuando se importan <em>Despliegues</em> o <em>Ubicaciones</em> desde un archivo CSV, debe proporcionar sus valores de <code class="docutils literal notranslate"><span class="pre">zona_horaria</span></code> y <code class="docutils literal notranslate"><span class="pre">ignorar_Hora_de_Ahorro</span></code> en los formularios de importación.</p>
+<p>Esto significa que solo puede importar ubicaciones con la misma <code class="docutils literal notranslate"><span class="pre">zona_horaria</span></code> y el mismo valor de la bandera <code class="docutils literal notranslate"><span class="pre">ignorar_Hora_de_Ahorro</span></code>. Los datos que no cumplen con esta condición deben importarse utilizando archivos CSV separados.</p>
+<p>Cuando se importan <em>Ubicaciones</em>, los valores del formulario se establecerán para todos los objetos importados.</p>
+<p>Cuando se importan <em>Despliegues</em>, pueden estar vinculados a diferentes ubicaciones, pero todas las ubicaciones deben tener la misma especificación de zona horaria. Si se crean ubicaciones, su información de zona horaria se establecerá en los datos del formulario.</p>
+<p>Cuando se suben <em>Despliegues</em> a ubicaciones existentes, el archivo se validará para asegurarse de que todas las ubicaciones mencionadas en los datos tengan la misma especificación de zona horaria que en el formulario.</p>
+<p>Esto también se aplica a subir <em>Colecciones</em> - cuando se utilizan <a class="reference external" href="https://gitlab.com/trapper-project/trapper-tools">trapper-tools</a>, las <em>Colecciones</em> solo pueden crearse desde <em>Recursos</em> vinculados a ubicaciones con la misma especificación de zona horaria. La especificación de zona horaria se proporciona en el archivo YAML que describe la <em>Colección</em>. Cuando se sube una <em>Colección</em>, se realiza un proceso de validación para comprobar que la zona horaria proporcionada coincide con las ubicaciones en la base de datos.</p>
+</section></section><section id="proveedor-de-inteligencia-artificial-y-configuración-del-proyecto-de-clasificación">
+<h2>Proveedor de Inteligencia Artificial y Configuración del Proyecto de Clasificación</h2>
+<p>TRAPPER proporciona integración avanzada de inteligencia artificial a través de <strong>Proveedores de Inteligencia Artificial</strong> y <strong>Proyectos de Clasificación</strong> que pueden aprovechar modelos de aprendizaje automático para el análisis automatizado de imágenes. Esta función es particularmente útil para procesar grandes conjuntos de datos y proporcionar clasificaciones iniciales que pueden ser revisadas y refinadas por anotadores humanos.</p>
+<p><strong>Resumen</strong></p>
+<p>Los Proveedores de Inteligencia Artificial en TRAPPER son servicios configurables que proporcionan capacidades de análisis automatizado de imágenes:</p>
+<ul class="simple">
+<li><p><strong>Detección de Imágenes Vacías</strong>: Filtrar imágenes que no contienen objetos de interés</p></li>
+<li><p><strong>Detección de Objetos</strong>: Identificar y localizar animales, humanos y vehículos en las imágenes</p></li>
+<li><p><strong>Clasificación de Especies</strong>: Identificar automáticamente especies basadas en el contenido de la imagen</p></li>
+</ul>
+<p><strong>Configuración</strong></p>
+<p>Los Proveedores de Inteligencia Artificial de Trapper se configuran por los administradores a través de la interfaz de administración Django y pueden asociarse con Proyectos de Clasificación para proporcionar asistencia automatizada durante la anotación.</p>
+<p>Trapper AI actualmente admite varias arquitecturas de aprendizaje profundo (incluyendo Darknet, YOLOR, YOLOv5, YOLOv8, YOLOv9, YOLOv10, YOLOv11, RT-DETR y ViT). Los modelos de AI disponibles incluyen:</p>
+<ul class="simple">
+<li><p><strong>MegaDetector v5</strong>: Detección general de objetos en cámaras trampa; <a class="reference external" href="https://github.com/agentmorris/MegaDetector">ENLACE</a></p></li>
+<li><p><strong>MegaDetector v6 (PyTorch Wildlife)</strong>: Detección general de objetos en cámaras trampa; <a class="reference external" href="https://github.com/microsoft/CameraTraps">ENLACE</a></p></li>
+<li><p><strong>DeepFaune v1.2/v1.3</strong>: Clasificación de especies de mamíferos europeos; <a class="reference external" href="https://plmlab.math.cnrs.fr/deepfaune/software">ENLACE</a></p></li>
+<li><p><strong>Clasificador de Especies de Trapper AI v02.2024/v08.2024</strong>: Clasificación de especies de mamíferos europeos; <a class="reference external" href="https://huggingface.co/OSCF/TrapperAI-v02.2024">ENLACE</a></p></li>
+</ul>
+<div class="admonition seealso">
+<p class="admonition-title">Ver también</p>
+<p>Para instrucciones detalladas de configuración del Proveedor de Inteligencia Artificial TrapperAI, consulte <a class="reference internal" href="administration.html#administration"><span class="std std-ref">Administración</span></a> → Configuración del Proveedor de Inteligencia Artificial TrapperAI. Para variables de entorno y configuraciones del sistema, consulte <a class="reference internal" href="configuration.html#configuration"><span class="std std-ref">Configuración</span></a>
+→ Configuración del Pipeline de AI.</p>
+</div>
+</section><section id="flujo-de-trabajo-automatico-pipeline-ai">
+<span id="tutorial-flujo-de-trabajo-automatico-pipeline-ai"></span><h2>Flujo de trabajo automático de pipeline AI</h2>
+<p>TRAPPER cuenta con un sofisticado <strong>pipeline de AI automatizado</strong> que puede procesar imágenes de cámaras trampa subidas mediante múltiples etapas de análisis de aprendizaje automático. Este pipeline simplifica el proceso de anotación al detectar automáticamente objetos, clasificar especies, construir secuencias y aplicar filtros de privacidad.</p>
+<p><strong>Resumen del flujo de trabajo</strong></p>
+<p>El pipeline de AI consta de cuatro etapas secuenciales que se disparan automáticamente cuando se suben nuevas colecciones a proyectos de clasificación con procesamiento de AI habilitado:</p>
+<ol class="arabic simple">
+<li><p><strong>Construcción de secuencias</strong>: Agrupa imágenes relacionadas en secuencias temporales significativas</p></li>
+<li><p><strong>Detección de objetos</strong>: Identifica y localiza animales, humanos y vehículos en las imágenes</p></li>
+<li><p><strong>Privacidad: Desenfoque automático</strong>: Desenfoca automáticamente caras humanas y placas de matrícula de vehículos</p></li>
+<li><p><strong>Clasificación de especies</strong>: Clasifica los animales detectados a nivel de especie</p></li>
+</ol>
+<p>Cada etapa se basa en los resultados de la etapa anterior, creando un flujo de trabajo automático integral que reduce significativamente el esfuerzo de anotación manual.</p>
+<p><strong>Uso del pipeline con Trapper-Tools</strong></p>
+<p>La forma más eficiente de utilizar el pipeline de AI es a través de la <strong>comandos de trapper-tools de pipeline</strong>, que automatizan todo el flujo de trabajo desde la preparación de datos hasta el procesamiento de AI:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Flujo de trabajo automático completo: convertir → paquete → subir → disparar procesamiento de AI</span>
+trapper-tools<span class="w"> </span>pipeline<span class="w"> </span>--data-path<span class="w"> </span>/ruta/al/datos<span class="w"> </span>--convertir<span class="w"> </span>--disparar
+</pre></div>
+</div>
+<p>Este solo comando realizará:</p>
+<ul class="simple">
+<li><p>Convierte archivos de medios en formatos amigables para la web</p></li>
+<li><p>Crea paquetes de datos estandarizados con metadatos</p></li>
+<li><p>Sube los paquetes de manera segura mediante FTPS</p></li>
+<li><p>Dispara el procesamiento automático del pipeline de AI al subir</p></li>
+</ul>
+<p><strong>Beneficios del flujo de trabajo</strong></p>
+<ul class="simple">
+<li><p><strong>Procesamiento automatizado</strong>: Reduce el esfuerzo de anotación manual en un 60-80%</p></li>
+<li><p><strong>Cualidad consistente</strong>: Aplica modelos de AI estandarizados a todas las imágenes</p></li>
+<li><p><strong>Protección de privacidad</strong>: Protege automáticamente contenido sensible</p></li>
+<li><p><strong>Escalabilidad</strong>: Procesa miles de imágenes de manera eficiente</p></li>
+<li><p><strong>Control de calidad</strong>: Proporciona puntuaciones de confianza y flujos de trabajo de revisión</p></li>
+</ul>
+<div class="admonition seealso">
+<p class="admonition-title">Ver también</p>
+<p>Para la configuración detallada del pipeline, consulte <a class="reference internal" href="configuration.html#configuration"><span class="std std-ref">Configuración</span></a> → Configuración de Pipeline AI.
+Para la configuración y monitoreo del proveedor de AI, consulte <a class="reference internal" href="administration.html#administration"><span class="std std-ref">Administración</span></a> → Configuración de Proveedor de AI y Proyecto de Clasificación.</p>
+</div>
+<section id="cómo-generar-y-desplegar-template-de-implemtaciones">
+<h3>Cómo generar y desplegar template de implementaciones</h3>
+<p>Primero, asegúrese de que sus datos siguen la estructura de directorio requerida con carpetas de colecciones y despliegue. Luego utilice el comando asistente para generar un template de implementación:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>trapper-tools<span class="w"> </span>helpers<span class="w"> </span>template<span class="w"> </span>--data-path<span class="w"> </span>/ruta/al/datos
+</pre></div>
+</div>
+<p>Este analiza la estructura de datos y crea un archivo CSV con información de despliegue extraída de los archivos multimedia. Puede revisar y editar este archivo CSV antes de importarlo en TRAPPER a través de <em>Mapa</em> &gt; <em>Despliegues</em> &gt; <em>Importar despliegues</em>.</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Para instrucciones detalladas sobre la instalación, configuración y uso avanzado de Trapper Tools, consulte <a class="reference external" href="https://gitlab.com/trapper-project/trapper-tools">https://gitlab.com/trapper-project/trapper-tools</a>.</p>
+</div>
+</section>
+</section>
+</body>
+</html>
